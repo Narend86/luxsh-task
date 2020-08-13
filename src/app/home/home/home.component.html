@@ -1,0 +1,103 @@
+<mat-form-field>
+    <mat-label>Filter</mat-label>
+    <input matInput (keyup)="applyFilter($event)" placeholder="Ex. ium" #input>
+  </mat-form-field>
+  <button mat-raised-button class="my-2" (click)="addSite()">add Site</button>
+  <div class="example-table-container">
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+  
+    <!-- Position Column -->
+    <ng-container matColumnDef="Site_Id">
+      <th mat-header-cell *matHeaderCellDef> No. </th>
+      <td mat-cell *matCellDef="let element"> {{element.Site_Id}} </td>
+    </ng-container>
+  
+    <!-- Name Column -->
+    <ng-container matColumnDef="Company_Id">
+      <th mat-header-cell *matHeaderCellDef> Name </th>
+      <td mat-cell *matCellDef="let element"> {{element.Company_Id}} </td>
+    </ng-container>
+  
+    <!-- Weight Column -->
+    <ng-container matColumnDef="Site_Code">
+      <th mat-header-cell *matHeaderCellDef> Weight </th>
+      <td mat-cell *matCellDef="let element"> {{element.Site_Code}} </td>
+    </ng-container>
+  
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="Site_Name">
+      <th mat-header-cell *matHeaderCellDef> Site Name </th>
+      <td mat-cell *matCellDef="let element"> {{element.Site_Name}} </td>
+    </ng-container>
+    <ng-container matColumnDef="Address1">
+        <th mat-header-cell *matHeaderCellDef> Address1 </th>
+        <td mat-cell *matCellDef="let element"> {{element.Address1}} </td>
+      </ng-container>
+      <ng-container matColumnDef="Address2">
+        <th mat-header-cell *matHeaderCellDef> Address2 </th>
+        <td mat-cell *matCellDef="let element"> {{element.Address2}} </td>
+      </ng-container>
+      <ng-container matColumnDef="Address3">
+        <th mat-header-cell *matHeaderCellDef> Address3 </th>
+        <td mat-cell *matCellDef="let element"> {{element.Address3}} </td>
+      </ng-container>
+      <ng-container matColumnDef="Address4">
+        <th mat-header-cell *matHeaderCellDef> Address4 </th>
+        <td mat-cell *matCellDef="let element"> {{element.Address4}} </td>
+      </ng-container>
+      <ng-container matColumnDef="PostCode">
+        <th mat-header-cell *matHeaderCellDef> PostCode </th>
+        <td mat-cell *matCellDef="let element"> {{element.PostCode}} </td>
+      </ng-container>
+      <ng-container matColumnDef="City">
+        <th mat-header-cell *matHeaderCellDef> City </th>
+        <td mat-cell *matCellDef="let element"> {{element.City}} </td>
+      </ng-container>
+      <ng-container matColumnDef="State">
+        <th mat-header-cell *matHeaderCellDef> State </th>
+        <td mat-cell *matCellDef="let element"> {{element.State}} </td>
+      </ng-container>
+      <ng-container matColumnDef="Country">
+        <th mat-header-cell *matHeaderCellDef> Country </th>
+        <td mat-cell *matCellDef="let element"> {{element.Country}} </td>
+      </ng-container>
+      <ng-container matColumnDef="Active">
+        <th mat-header-cell *matHeaderCellDef> Active </th>
+        <td mat-cell *matCellDef="let element"> {{element.isActive == "0" ? 'Active':'Inactive'}} </td>
+      </ng-container>
+      <ng-container matColumnDef="AddedBy">
+        <th mat-header-cell *matHeaderCellDef> AddedBy </th>
+        <td mat-cell *matCellDef="let element"> {{element.AddedBy}} </td>
+      </ng-container>
+        <!-- Symbol Column -->
+        <ng-container matColumnDef="action">
+            <th mat-header-cell *matHeaderCellDef> action </th>
+            <td mat-cell *matCellDef="let element">
+                <div class="example-button-row">
+                <div class="example-flex-container">
+                      <button mat-icon-button color="accent" (click)="updateSite(element)">
+                        <mat-icon>edit</mat-icon>
+                      </button>
+                      <button mat-icon-button color="warn" (click)="deleteSite(element)">
+                        <mat-icon>delete</mat-icon>
+                      </button>
+                </div>
+                </div>
+            </td>
+          </ng-container>
+  
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    <td mat-cell *matCellDef="let element">
+        <button mat-button >Edit</button>
+    </td>     
+    <!-- Row shown when there is no matching data. -->
+    <tr class="mat-row" *matNoDataRow>
+      <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
+    </tr>
+  </table>
+  </div>
+  
+  <!-- Copyright 2020 Google LLC. All Rights Reserved.
+      Use of this source code is governed by an MIT-style license that
+      can be found in the LICENSE file at http://angular.io/license -->

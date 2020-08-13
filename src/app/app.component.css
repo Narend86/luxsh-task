@@ -1,0 +1,10 @@
+.example-spacer {
+    flex: 1 1 auto;
+  }
+  .nav_link{
+    color: #fff;
+    text-decoration: none;
+  }
+  .nav_link:hover{
+    opacity: 0.6;
+  }
