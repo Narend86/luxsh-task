@@ -103,8 +103,6 @@ addSite(){
 }
 deleteSite(data){
   console.log(data)
-  console.log(this.dataSource)
-  debugger
   let Site_Id = data.Site_Id;
   this.userService.deleteSite(Site_Id).subscribe(result=>{
     console.log(result)
